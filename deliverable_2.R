@@ -44,8 +44,6 @@ ggplot(data = melted_cor, aes(x = Var1, y = Var2, fill = value)) +
   coord_fixed() +
   labs(title = "Correlation Heatmap of Selected Indicators", x = "", y = "")
 
-#Individual Scatter Plots with Regression Lines
-
 # Unemployment vs Primary Enrollment
 p1 <- ggplot(subset_df, aes(x = Unemployment_Rate, y = Gross_Primary_Education_Enrollment)) +
   geom_point(color = "purple") +
