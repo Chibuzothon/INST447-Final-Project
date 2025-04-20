@@ -126,5 +126,19 @@ p4 <- ggplot(
   theme_minimal()
 print(p4)
 
+#Descriptive Statistics for birthrate and male youth (15-24) literacy rates
+summary(global_edu[, c("Birth_Rate", "Youth_15_24_Literacy_Rate_Male")])
 
+# Visualizations
+#Scatter plot comparing birth rate and male youth literacy rate
+plot(global_edu$Birth_Rate, 
+     global_edu$Youth_15_24_Literacy_Rate_Male,
+     main = "Correlation between birth rate and male youth literacy",
+     xlab = "Birth Rate", 
+     ylab = "Male Youth Literacy Rate")
 
+# Box plot comparing birth Rate and male youth literacy rate
+boxplot(global_edu$Birth_Rate, 
+        global_edu$Youth_15_24_Literacy_Rate_Male,
+        main = "Correlation between birth rate and male youth literacy",
+        names = c("Birth Rate", "Male Youth Literacy Rate"))
