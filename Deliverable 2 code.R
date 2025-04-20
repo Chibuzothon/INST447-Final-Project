@@ -40,6 +40,91 @@ ggplot(Global_Edu, aes(x = CRPF, y = YLRF)) +
   geom_point() + 
   geom_smooth(method = "lm", se = TRUE, color = "red", linetype = "dashed")
 
+# Created dataframe for measuring
+BR_M <- select(global_edu,
+                    Unemployment_Rate,
+                    Gross_Primary_Education_Enrollment,
+                    Gross_Tertiary_Education_Enrollment,
+                    Birth_Rate,
+                    Completion_Rate_Upper_Secondary_Male,
+                    Completion_Rate_Upper_Secondary_Female
+)
+
+# Descriptive statistics
+cat("Descriptive Statistics")
+print(summary(BR_M))
+
+# Unemployment vs Primary Enrollment
+p1 <- ggplot(
+  data = BR_M,
+  aes(
+    x = Unemployment_Rate,
+    y = Gross_Primary_Education_Enrollment
+  )
+) +
+  geom_point(color = "purple") +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Unemployment vs Primary Enrollment",
+    x     = "Unemployment Rate",
+    y     = "Gross Primary Enrollment"
+  ) +
+  theme_minimal()
+print(p1)
+
+# Unemployment vs Tertiary Enrollment
+p2 <- ggplot(
+  data = BR_M,
+  aes(
+    x = Unemployment_Rate,
+    y = Gross_Tertiary_Education_Enrollment
+  )
+) +
+  geom_point(color = "orange") +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Unemployment vs Tertiary Enrollment",
+    x     = "Unemployment Rate",
+    y     = "Gross Tertiary Enrollment"
+  ) +
+  theme_minimal()
+print(p2)
+
+# Birth Rate vs Upper Secondary Completion (Male)
+p3 <- ggplot(
+  data = BR_M,
+  aes(
+    x = Birth_Rate,
+    y = Completion_Rate_Upper_Secondary_Male
+  )
+) +
+  geom_point(color = "darkgreen") +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Birth Rate vs Completion (Male)",
+    x     = "Birth Rate",
+    y     = "Upper Secondary Completion (Male)"
+  ) +
+  theme_minimal()
+print(p3)
+
+# Birth Rate vs Upper Secondary Completion (Female)
+p4 <- ggplot(
+  data = BR_M,
+  aes(
+    x = Birth_Rate,
+    y = Completion_Rate_Upper_Secondary_Female
+  )
+) +
+  geom_point(color = "darkred") +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Birth Rate vs Completion (Female)",
+    x     = "Birth Rate",
+    y     = "Upper Secondary Completion (Female)"
+  ) +
+  theme_minimal()
+print(p4)
 
 
 
