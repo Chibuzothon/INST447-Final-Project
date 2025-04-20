@@ -25,6 +25,21 @@ plot(x = var$Birth_Rate, y= var$Unemployment_Rate,
      xlab = "Birth Rate",
      ylab = "Unempoyment Rate",
      main = "Birth Rate vs Unemployment Rate")
-     
+
+#Descriptive stats for primary female completion and female youth literacy rates
+summary(global_edu[,c("Completion_Rate_Primary_Female","Youth_15_24_Literacy_Rate_Female")])
+
+#Scatter plot for primary female completion and female youth literacy rates
+CRPF = c(global_edu$Completion_Rate_Primary_Female)
+YLRF = c(global_edu$Youth_15_24_Literacy_Rate_Female)
+
+ggplot(Global_Edu, aes(x = CRPF, y = YLRF)) +
+  labs(title = "Correlation Between Female Primary Completion & Youth Literacy",
+       x = "Primary Completion Rate (Female)",
+       y = "Youth Literacy Rate (Female)") +
+  geom_point() + 
+  geom_smooth(method = "lm", se = TRUE, color = "red", linetype = "dashed")
+
+
 
 
