@@ -142,3 +142,33 @@ boxplot(global_edu$Birth_Rate,
         global_edu$Youth_15_24_Literacy_Rate_Male,
         main = "Correlation between birth rate and male youth literacy",
         names = c("Birth Rate", "Male Youth Literacy Rate"))
+
+
+#OOSR vs Completion rate Description stats
+
+summary(global_edu[, c("Completion_Rate_Primary_Female", "OOSR_Primary_Age_Female")])
+
+#scatter plot OOSR vs Completion rate
+plot(global_edu$Completion_Rate_Primary_Female, global_edu$OOSR_Primary_Age_Female,
+     xlab = "Out-of-School Rate",
+     ylab = "Completion Rate",
+     main="Out-of-School Rate vs. Completion Rate (Primary-Aged Females)",
+     pch = 19,
+     col = "darkblue")
+#regression line
+abline(lm(Completion_Rate_Primary_Female ~ OOSR_Primary_Age_Female, data = global_edu), col = "red", lwd = 2)
+
+#histogram completion rate:
+hist(global_edu$Completion_Rate_Primary_Female,
+     main = "Distribution of Female Primary Completion Rates",
+     xlab = "Completion Rate",
+     col = "skyblue", 
+     border = "white")
+
+#histogram out of school rate:
+hist(global_edu$OOSR_Primary_Age_Female,
+     main = "Distribution of Out-of-School Rates (Females)",
+     xlab = "Out-of-School Rate",
+     col = "salmon",
+     border = "white")
+
